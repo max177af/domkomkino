@@ -1,0 +1,223 @@
+/* --- BACKGROUND --- */ 
+body {
+    background-image: url('/img/image-background.jpg');
+    background-size: cover;       /* растягивает на весь экран */
+    background-position: center;  /* центрирует изображение */
+    background-attachment: fixed; /* фиксирует при скролле */
+    background-repeat: no-repeat;
+    margin: 0;
+    min-height: 100vh;           /* на всю высоту экрана */
+}
+
+/* --- TOP MENU --- */
+#top-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 80px;
+    background: rgb(0, 160, 223);
+    position: fixed;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Логотип */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    border-radius: 10px;
+    border:2px solid rgb(255, 255, 255);
+}
+
+/* Кнопки справа */
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-button {
+    background-color: white;
+    color: #00a0df;
+    padding: 10px 20px 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: hsla(197, 65%, 83%, 0.966);
+}
+
+/* --- КАТЕГОРИИ --- */
+.category {
+    background-color: rgba(0, 160, 223, 0.637); 
+
+    margin: 120px auto 40px auto;
+    max-width: 1000px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+}
+
+.category.open {    
+    background-color: rgba(0, 160, 223, 0.747);
+    border-left: 5px solid hsla(180, 20%, 1%, 0.13);
+}
+
+.arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+  
+.category.open .arrow {
+    transform: rotate(180deg);
+}
+
+/* Заголовок категории */
+.gif-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 24px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+.gif-area img {
+    width: 64px;
+    height: auto;
+    border-radius: 6px;
+}
+
+.gif-area h3 {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+}
+
+/* Видео в категории */
+.videos {
+    display: none;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px, 0;
+}
+
+.videos video {
+    width: 220px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+    padding-left: 12px;
+}
+
+.video-title {
+    text-align: center;
+    margin-top: 6px;
+    font-size: 15px;
+    color: #444;
+}
+
+/* --- MODAL VIDEO --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal video {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 12px;
+}
+
+.modal .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 36px;
+    color: white;
+    cursor: pointer;
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+@media (max-width: 801px) {
+    #top-menu {
+        flex-direction: row;
+        height: auto;
+        padding: 10px 20px 10px;
+        left: 0;
+        right: 0;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+
+    }
+
+    .logo {
+        align-self: flex-start;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        gap: 20px;
+        right: 0;
+        width: 100%;
+        align-items: flex-end;
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+
+    .nav-button {
+        background-color: white;
+        color: #00a0df;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        text-align: center;
+        width: fit-content;
+        margin-left: auto;
+    }
+    
+
+    .videos {
+        justify-content: center;
+    }
+
+    .videos video {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .gif-area {
+        flex-direction: column;
+        text-align: center;
+    }
+}
