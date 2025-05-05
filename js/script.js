@@ -14,6 +14,7 @@ function initVideoHover() {
     <video controls autoplay></video>
   `;
   document.body.appendChild(modal);
+  modal.querySelector('.close').addEventListener('click', closeModal);
   
   function openModal(video) {
     const src = video.src.replace('_cut', '');
@@ -59,3 +60,9 @@ function initVideoHover() {
     initVideoHover();
     initAccordion();
   });
+
+  // Активация кнопки "Все видео" в навигации
+  const currentPage = window.location.pathname; 
+  if (currentPage.includes("all-videos")) {
+    document.getElementById("all-videos-btn").classList.add("active");
+  }
